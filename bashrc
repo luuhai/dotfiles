@@ -174,4 +174,7 @@ export GIT_EDITOR="vim"
 export PS1="$PS1\$(parse_git_branch)\$(parse_svn_branch) "
 source ~/.rvm/scripts/rvm
 source ~/code/virtualenv/bin/activate
-alias neovim="nvim"
+alias vim="nvim"
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
