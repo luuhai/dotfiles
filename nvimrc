@@ -11,6 +11,8 @@ set hlsearch
 set backspace=indent,eol,start
 autocmd Filetype python setlocal ts=4 sts=4 sw=4
 autocmd Filetype html setlocal ts=4 sts=4 sw=4
+autocmd Filetype css setlocal ts=4 sts=4 sw=4
+autocmd Filetype scss setlocal ts=4 sts=4 sw=4
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -47,6 +49,8 @@ Plugin 'cdmedia/itg_flat_vim'
 Plugin 'ajh17/Spacegray.vim'
 Plugin 'danro/rename.vim'
 Plugin 'slim-template/vim-slim.git'
+Plugin 'kchmck/vim-coffee-script'
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
