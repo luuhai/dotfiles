@@ -50,6 +50,12 @@ Plugin 'ajh17/Spacegray.vim'
 Plugin 'danro/rename.vim'
 Plugin 'slim-template/vim-slim.git'
 Plugin 'kchmck/vim-coffee-script'
+Plugin 'MaxSt/Flatcolor'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'godlygeek/csapprox'
+Plugin 'romainl/Apprentice'
+Plugin 'tomasr/molokai'
+Plugin 'NLKNguyen/papercolor-theme'
 
 
 " All of your Plugins must be added before the following line
@@ -59,10 +65,16 @@ filetype plugin indent on    " required
 let g:html_indent_inctags = "html,body,head,tbody"
 let g:hybrid_use_Xresources = 1
 syntax on
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 " Remember to add these lines if you want to use solarized
 " let g:solarized_termcolors=256
-" set background=dark
+let &t_ZH="\e[3m"
+let &t_ZR="\e[23m"
+let g:gruvbox_contrast='hard'
+let g:gruvbox_italic=1
 colorscheme gruvbox
+highlight Comment gui=italic cterm=italic
+set background=dark
 nmap <F8> :TagbarToggle<CR>
 
 " Yanking and Pasting - Temporary solution

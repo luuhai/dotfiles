@@ -34,6 +34,9 @@ Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'bitc/vim-bad-whitespace'
 Plugin 'jnurmine/Zenburn'
+Plugin 'skwp/vim-colors-solarized'
+Plugin 'MaxSt/FlatColor'
+Plugin 'Valloric/YouCompleteMe'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -41,8 +44,11 @@ filetype plugin indent on    " required
 " Use this line with Vim 7.4 to auto indent html files
 let g:html_indent_inctags = "html,body,head,tbody"
 let g:hybrid_use_Xresources = 1
-colorscheme jellybeans
 nmap <F8> :TagbarToggle<CR>
+
+let g:solarized_termcolors=256
+let g:gruvbox_italic=1
+colorscheme gruvbox
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
 "

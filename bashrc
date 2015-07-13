@@ -24,7 +24,7 @@ if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
 fi
 
 #PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-PS1='\[\033[01;31m\]\w\[\033[00m\]\n${debian_chroot:+($debian_chroot)}\[\033[01;34m\]\u\[\033[01;32m\]@\[\033[01;34m\]\h\[\033[00m\]\$ '
+PS1='\[\033[01;31m\]\w\[\033[00m\]\n${debian_chroot:+($debian_chroot)}\[\033[01;33m\]\u\[\033[01;32m\]@\[\033[01;36m\]\h\[\033[00m\]\$ '
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
@@ -106,6 +106,7 @@ else
   alias ls="ls -F"
   alias ll="ls -lF"
 fi
+[[ -n "$DISPLAY" && "$TERM" = "xterm" ]] && export TERM=xterm-256color-italic
 
 # Alias definitions.
 if [ -f ~/.bash_aliases ]; then
@@ -123,9 +124,9 @@ fi
   [ "_$TERM" = "_xterm" ] && type ldd && type grep && type tput && [ -L "/proc/$PPID/exe" ] && {
     if ldd /proc/$PPID/exe | grep libvte; then
       if [ "`tput -Txterm-256color colors`" = "256" ]; then
-        TERM=xterm-256color
+        TERM=xterm-256color-italic
       elif [ "`tput -Txterm-256color colors`" = "256" ]; then
-        TERM=xterm-256color
+        TERM=xterm-256color-italic
       elif tput -T xterm; then
         TERM=xterm
       fi
@@ -178,3 +179,6 @@ alias vim="nvim"
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+# Add this line to fix the bug: new tab is not opened in the same location as previous tab
+. /etc/profile.d/vte.sh
