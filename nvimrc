@@ -13,6 +13,10 @@ autocmd Filetype python setlocal ts=4 sts=4 sw=4
 autocmd Filetype html setlocal ts=4 sts=4 sw=4
 autocmd Filetype css setlocal ts=4 sts=4 sw=4
 autocmd Filetype scss setlocal ts=4 sts=4 sw=4
+autocmd Filetype ruby,eruby setlocal omnifunc=rubycomplete#Complete
+autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
+autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -56,6 +60,7 @@ Plugin 'godlygeek/csapprox'
 Plugin 'romainl/Apprentice'
 Plugin 'tomasr/molokai'
 Plugin 'NLKNguyen/papercolor-theme'
+Plugin 'othree/html5.vim'
 
 
 " All of your Plugins must be added before the following line
@@ -72,9 +77,9 @@ let &t_ZH="\e[3m"
 let &t_ZR="\e[23m"
 let g:gruvbox_contrast='hard'
 let g:gruvbox_italic=1
+set background=dark
 colorscheme gruvbox
 highlight Comment gui=italic cterm=italic
-set background=dark
 nmap <F8> :TagbarToggle<CR>
 
 " Yanking and Pasting - Temporary solution
