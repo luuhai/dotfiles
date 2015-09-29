@@ -2,7 +2,6 @@ set number
 set expandtab
 set shiftwidth=2
 set softtabstop=2
-set background=dark
 set laststatus=2
 set foldmethod=indent
 set foldlevel=99
@@ -61,6 +60,11 @@ Plugin 'romainl/Apprentice'
 Plugin 'tomasr/molokai'
 Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'othree/html5.vim'
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'kristijanhusak/vim-hybrid-material'
+Plugin 'NSBrianWard/Glacier-Remixes'
+Plugin 'chriskempson/base16-vim'
+Plugin 'baskerville/bubblegum'
 
 
 " All of your Plugins must be added before the following line
@@ -78,7 +82,8 @@ let &t_ZR="\e[23m"
 let g:gruvbox_contrast='hard'
 let g:gruvbox_italic=1
 set background=dark
-colorscheme gruvbox
+autocmd vimenter * colorscheme hybrid
+autocmd vimenter * AirlineTheme hybrid
 highlight Comment gui=italic cterm=italic
 nmap <F8> :TagbarToggle<CR>
 
@@ -93,6 +98,19 @@ endfunction
 vnoremap <silent> y y:call ClipboardYank()<cr>
 vnoremap <silent> d d:call ClipboardYank()<cr>
 nnoremap <silent> p :call ClipboardPaste()<cr>p
+
+autocmd BufNew * wincmd l
+autocmd vimenter * NERDTree | wincmd p
+map <C-n> :NERDTreeTabsToggle<CR>
+
+set undofile
+set undodir=/home/hailt/.vim/vimundo
+set undolevels=1000
+set undoreload=10000
+
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+
 
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
