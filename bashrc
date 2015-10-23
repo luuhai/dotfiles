@@ -106,7 +106,7 @@ else
   alias ls="ls -F"
   alias ll="ls -lF"
 fi
-[[ -n "$DISPLAY" && "$TERM" = "xterm" ]] && export TERM=xterm-256color-italic
+[[ -n "$DISPLAY" && "$TERM" = "xterm" ]] && export TERM=xterm
 
 # Alias definitions.
 if [ -f ~/.bash_aliases ]; then
@@ -124,9 +124,9 @@ fi
   [ "_$TERM" = "_xterm" ] && type ldd && type grep && type tput && [ -L "/proc/$PPID/exe" ] && {
     if ldd /proc/$PPID/exe | grep libvte; then
       if [ "`tput -Txterm-256color colors`" = "256" ]; then
-        TERM=xterm-256color-italic
+        TERM=xterm-256color
       elif [ "`tput -Txterm-256color colors`" = "256" ]; then
-        TERM=xterm-256color-italic
+        TERM=xterm-256color
       elif tput -T xterm; then
         TERM=xterm
       fi
@@ -145,6 +145,8 @@ if [ "$vim" == "" ]; then
 fi
 
 alias vim="$vim"
+alias eat="cd ~/code/mmj/eatout"
+alias railsmon="top -p \$(ps -ef | grep \"[r]ails s\" | awk '{print \$2}')"
 
 # osx vim
 if [ -x "/Applications/MacVim.app/Contents/MacOS/Vim" ]; then
@@ -174,11 +176,14 @@ export GIT_EDITOR="vim"
 # Add git and svn branch names
 export PS1="$PS1\$(parse_git_branch)\$(parse_svn_branch) "
 source ~/.rvm/scripts/rvm
-source ~/code/virtualenv/bin/activate
-alias vim="nvim"
+# source ~/code/virtualenv/bin/activate
+# alias vim="nvim"
+# alias ovim="/usr/bin/vim"
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
 # Add this line to fix the bug: new tab is not opened in the same location as previous tab
 . /etc/profile.d/vte.sh
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
