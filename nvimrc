@@ -65,7 +65,9 @@ Plugin 'kristijanhusak/vim-hybrid-material'
 Plugin 'NSBrianWard/Glacier-Remixes'
 Plugin 'chriskempson/base16-vim'
 Plugin 'baskerville/bubblegum'
-
+Plugin 'othree/yajs.vim'
+Plugin 'thoughtbot/vim-rspec'
+Plugin 'scrooloose/syntastic'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
