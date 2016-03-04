@@ -24,7 +24,7 @@ if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
 fi
 
 #PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-PS1='\[\033[01;31m\]\w\[\033[00m\]\n${debian_chroot:+($debian_chroot)}\[\033[01;33m\]\u\[\033[01;32m\]@\[\033[01;36m\]\h\[\033[00m\]\$ '
+PS1='\[\033[01;31m\]\w\[\033[00m\]'
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
@@ -124,9 +124,9 @@ fi
   [ "_$TERM" = "_xterm" ] && type ldd && type grep && type tput && [ -L "/proc/$PPID/exe" ] && {
     if ldd /proc/$PPID/exe | grep libvte; then
       if [ "`tput -Txterm-256color colors`" = "256" ]; then
-        TERM=xterm-256color
+        TERM=xterm-256color-it
       elif [ "`tput -Txterm-256color colors`" = "256" ]; then
-        TERM=xterm-256color
+        TERM=xterm-256color-it
       elif tput -T xterm; then
         TERM=xterm
       fi
@@ -145,7 +145,8 @@ if [ "$vim" == "" ]; then
 fi
 
 alias vim="$vim"
-alias eat="cd ~/code/mmj/eatout"
+alias eat="cd /home/hailt/code/mmj/eatout"
+alias kuiso="cd /home/hailt/code/docker/kuiso/service-office-hanoi"
 alias railsmon="top -p \$(ps -ef | grep \"[r]ails s\" | awk '{print \$2}')"
 
 # osx vim
@@ -174,7 +175,8 @@ export EDITOR="vim"
 export GIT_EDITOR="vim"
 
 # Add git and svn branch names
-export PS1="$PS1\$(parse_git_branch)\$(parse_svn_branch) "
+export PS1="$PS1\n\$(parse_git_branch)\$(parse_svn_branch)\n"
+export PS1="$PS1\${debian_chroot:+($debian_chroot)}\[\033[01;33m\]\u\[\033[01;32m\]@\[\033[01;36m\]\h\[\033[00m\]\$  "
 source ~/.rvm/scripts/rvm
 # source ~/code/virtualenv/bin/activate
 # alias vim="nvim"
