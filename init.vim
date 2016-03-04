@@ -8,9 +8,8 @@ set foldlevel=99
 set incsearch
 set hlsearch
 set backspace=indent,eol,start
-set cursorline
 autocmd Filetype python setlocal ts=4 sts=4 sw=4
-autocmd Filetype html setlocal ts=4 sts=4 sw=4
+autocmd Filetype html setlocal ts=2 sts=2 sw=2
 autocmd Filetype css setlocal ts=4 sts=4 sw=4
 autocmd Filetype scss setlocal ts=4 sts=4 sw=4
 autocmd Filetype ruby,eruby setlocal omnifunc=rubycomplete#Complete
@@ -67,8 +66,10 @@ Plugin 'chriskempson/base16-vim'
 Plugin 'baskerville/bubblegum'
 Plugin 'othree/yajs.vim'
 Plugin 'thoughtbot/vim-rspec'
-Plugin 'scrooloose/syntastic'
+" Plugin 'scrooloose/syntastic'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'ctrlpvim/ctrlp.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -80,13 +81,13 @@ syntax on
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 " Remember to add these lines if you want to use solarized
 " let g:solarized_termcolors=256
-let &t_ZH="\e[3m"
-let &t_ZR="\e[23m"
+set t_ZH=[3m
+set t_ZR=[23m
 let g:gruvbox_contrast='hard'
 let g:gruvbox_italic=1
 set background=dark
-autocmd vimenter * colorscheme hybrid
-autocmd vimenter * AirlineTheme bubblegum
+colorscheme base16-eighties
+let g:airline_theme='base16_eighties'
 highlight Comment gui=italic cterm=italic
 nmap <F8> :TagbarToggle<CR>
 
@@ -105,6 +106,8 @@ nnoremap <silent> p :call ClipboardPaste()<cr>p
 autocmd BufNew * wincmd l
 autocmd vimenter * NERDTree | wincmd p
 map <C-n> :NERDTreeTabsToggle<CR>
+let g:nerdtree_tabs_open_on_new_tab=1
+let g:nerdtree_tabs_open_on_console_startup=1
 
 set undofile
 set undodir=/home/hailt/.vim/vimundo
