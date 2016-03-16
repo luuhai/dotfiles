@@ -38,7 +38,7 @@ Plugin 'tpope/vim-haml'
 Plugin 'Shougo/unite.vim'
 Plugin 'bling/vim-airline'
 Plugin 'noahfrederick/vim-hemisu'
-Bundle 'morhetz/gruvbox'
+Plugin 'morhetz/gruvbox'
 Plugin 'w0ng/vim-hybrid'
 Plugin 'rstacruz/sparkup' " HTML zen coding
 Plugin 'majutsushi/tagbar'
@@ -88,6 +88,7 @@ let g:gruvbox_italic=1
 set background=dark
 colorscheme base16-eighties
 let g:airline_theme='base16_eighties'
+let base16colorspace=256
 highlight Comment gui=italic cterm=italic
 nmap <F8> :TagbarToggle<CR>
 
@@ -116,6 +117,13 @@ set undoreload=10000
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#show_splits = 0
+let g:airline#extensions#tabline#show_tabs = 1
+let g:airline#extensions#tabline#show_tab_nr = 0
+let g:airline#extensions#tabline#show_tab_type = 0
+let g:airline#extensions#tabline#close_symbol = '×'
+let g:airline#extensions#tabline#show_close_button = 0
 
 
 " To ignore plugin indent changes, instead use:
