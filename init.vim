@@ -9,6 +9,7 @@ set incsearch
 set hlsearch
 set backspace=indent,eol,start
 autocmd Filetype python setlocal ts=4 sts=4 sw=4
+autocmd Filetype go setlocal ts=8 sts=8 sw=8
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
 autocmd Filetype css setlocal ts=4 sts=4 sw=4
 autocmd Filetype scss setlocal ts=4 sts=4 sw=4
@@ -70,6 +71,8 @@ Plugin 'thoughtbot/vim-rspec'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -86,9 +89,9 @@ set t_ZR=[23m
 let g:gruvbox_contrast='hard'
 let g:gruvbox_italic=1
 set background=dark
-colorscheme base16-eighties
-let g:airline_theme='base16_eighties'
 let base16colorspace=256
+colorscheme base16-default
+let g:airline_theme='base16_eighties'
 highlight Comment gui=italic cterm=italic
 nmap <F8> :TagbarToggle<CR>
 
@@ -125,7 +128,19 @@ let g:airline#extensions#tabline#show_tab_type = 0
 let g:airline#extensions#tabline#close_symbol = '×'
 let g:airline#extensions#tabline#show_close_button = 0
 
+let g:ycm_path_to_python_interpreter = '/usr/bin/python'
 
+" The Silver Searcher
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
 "
