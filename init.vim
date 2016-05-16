@@ -81,7 +81,7 @@ filetype plugin indent on    " required
 let g:html_indent_inctags = "html,body,head,tbody"
 let g:hybrid_use_Xresources = 1
 syntax on
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+set termguicolors
 " Remember to add these lines if you want to use solarized
 " let g:solarized_termcolors=256
 set t_ZH=[3m
@@ -94,6 +94,8 @@ colorscheme base16-default
 let g:airline_theme='base16_eighties'
 highlight Comment gui=italic cterm=italic
 nmap <F8> :TagbarToggle<CR>
+
+let mapleader = "\<Space>"
 
 " Yanking and Pasting - Temporary solution
 function! ClipboardYank()
@@ -141,6 +143,14 @@ if executable('ag')
   " ag is fast enough that CtrlP doesn't need to cache
   let g:ctrlp_use_caching = 0
 endif
+
+" RSpec.vim mappings
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
+
+let g:rspec_command = "!rspec {spec}"
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
 "
