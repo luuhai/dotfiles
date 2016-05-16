@@ -9,7 +9,8 @@ set incsearch
 set hlsearch
 set backspace=indent,eol,start
 autocmd Filetype python setlocal ts=4 sts=4 sw=4
-autocmd Filetype html setlocal ts=4 sts=4 sw=4
+autocmd Filetype go setlocal ts=8 sts=8 sw=8
+autocmd Filetype html setlocal ts=2 sts=2 sw=2
 autocmd Filetype css setlocal ts=4 sts=4 sw=4
 autocmd Filetype scss setlocal ts=4 sts=4 sw=4
 autocmd Filetype ruby,eruby setlocal omnifunc=rubycomplete#Complete
@@ -38,7 +39,7 @@ Plugin 'tpope/vim-haml'
 Plugin 'Shougo/unite.vim'
 Plugin 'bling/vim-airline'
 Plugin 'noahfrederick/vim-hemisu'
-Bundle 'morhetz/gruvbox'
+Plugin 'morhetz/gruvbox'
 Plugin 'w0ng/vim-hybrid'
 Plugin 'rstacruz/sparkup' " HTML zen coding
 Plugin 'majutsushi/tagbar'
@@ -54,7 +55,6 @@ Plugin 'danro/rename.vim'
 Plugin 'slim-template/vim-slim.git'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'MaxSt/Flatcolor'
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'godlygeek/csapprox'
 Plugin 'romainl/Apprentice'
 Plugin 'tomasr/molokai'
@@ -64,23 +64,36 @@ Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'kristijanhusak/vim-hybrid-material'
 Plugin 'NSBrianWard/Glacier-Remixes'
 Plugin 'chriskempson/base16-vim'
-
+Plugin 'baskerville/bubblegum'
+Plugin 'othree/yajs.vim'
+Plugin 'thoughtbot/vim-rspec'
+" Plugin 'scrooloose/syntastic'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 " Use this line with Vim 7.4 to auto indent html files
 let g:html_indent_inctags = "html,body,head,tbody"
+let g:hybrid_use_Xresources = 1
 syntax on
 " Remember to add these lines if you want to use solarized
 " let g:solarized_termcolors=256
-let &t_ZH="\e[3m"
-let &t_ZR="\e[23m"
+set t_ZH=[3m
+set t_ZR=[23m
 let g:gruvbox_contrast='hard'
 let g:gruvbox_italic=1
-colorscheme hybrid
+set background=dark
+colorscheme base16-default
+let g:airline_theme='base16_eighties'
 highlight Comment gui=italic cterm=italic
 nmap <F8> :TagbarToggle<CR>
+
+let mapleader = "\<Space>"
 
 " Yanking and Pasting - Temporary solution
 function! ClipboardYank()
@@ -107,7 +120,35 @@ set undoreload=10000
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#show_splits = 0
+let g:airline#extensions#tabline#show_tabs = 1
+let g:airline#extensions#tabline#show_tab_nr = 0
+let g:airline#extensions#tabline#show_tab_type = 0
+let g:airline#extensions#tabline#close_symbol = '×'
+let g:airline#extensions#tabline#show_close_button = 0
 
+let g:ycm_path_to_python_interpreter = '/usr/bin/python'
+
+" The Silver Searcher
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
+
+" RSpec.vim mappings
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
+
+let g:rspec_command = "!rspec {spec}"
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
 "
