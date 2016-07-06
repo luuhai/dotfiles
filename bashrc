@@ -147,6 +147,7 @@ fi
 alias vim="$vim"
 alias eat="cd /home/hailt/code/mmj/eatout"
 alias kuiso="cd /home/hailt/code/docker/kuiso/service-office-hanoi"
+alias fudou="cd /home/hailt/code/docker/fudousan/fudousanjob"
 alias railsmon="top -p \$(ps -ef | grep \"[r]ails s\" | awk '{print \$2}')"
 
 # osx vim
@@ -189,3 +190,7 @@ export PATH="/usr/local/heroku/bin:$PATH"
 . /etc/profile.d/vte.sh
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+export HISTIZE=10000
+export HISTTIMEFORMAT="%d/%m/%y %T "
+export PROMPT_COMMAND='if [ "$(id -u)" -ne 0 ]; then echo "$(pwd) $(history 1)" >> ~/.logs/bash-history-$(date "+%Y-%m-%d").log; fi;history -a;history -c;history -r'
