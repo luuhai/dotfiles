@@ -24,7 +24,7 @@ if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
 fi
 
 #PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-PS1='\[\033[01;31m\]\w\[\033[00m\]'
+#PS1='\[\033[01;31m\]\w\[\033[00m\]'
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
@@ -160,7 +160,7 @@ export PYTHONSTARTUP
 
 parse_git_branch ()
 {
-  git branch 2> /dev/null | grep '*' | sed 's#*\ \(.*\)#(git::\1)#'
+  git branch 2> /dev/null | grep '*' | sed 's#*\ \(.*\)#\n(on git branch \1)#'
 }
 parse_svn_branch() {
   parse_svn_url | sed -e 's#^'"$(parse_svn_repository_root)"'##g' | awk -F / '{print "(svn::"$1 "/" $2 ")"}'
@@ -176,8 +176,8 @@ export EDITOR="vim"
 export GIT_EDITOR="vim"
 
 # Add git and svn branch names
-export PS1="$PS1\n\$(parse_git_branch)\$(parse_svn_branch)\n"
-export PS1="$PS1\${debian_chroot:+($debian_chroot)}\[\033[01;33m\]\u\[\033[01;32m\]@\[\033[01;36m\]\h\[\033[00m\]\$  "
+export PS1="\$(parse_git_branch)\$(parse_svn_branch)\n"
+export PS1="$PS1\${debian_chroot:+($debian_chroot)}\[\033[01;34m\]You are \[\033[01;33m\]\u\[\033[01;35m\] -at- \[\033[01;36m\]\h \[\033[00m\][\[\033[01;31m\]\w\[\033[00m\]]\n\[\033[01;32m\]\$  \[\033[00m\]"
 source ~/.rvm/scripts/rvm
 # source ~/code/virtualenv/bin/activate
 # alias vim="nvim"
