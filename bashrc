@@ -160,7 +160,7 @@ export PYTHONSTARTUP
 
 parse_git_branch ()
 {
-  git branch 2> /dev/null | grep '*' | sed 's#*\ \(.*\)#\n(on git branch \1)#'
+  git branch 2> /dev/null | grep '*' | sed 's#*\ \(.*\)#\n(đang ở git branch \1)#'
 }
 parse_svn_branch() {
   parse_svn_url | sed -e 's#^'"$(parse_svn_repository_root)"'##g' | awk -F / '{print "(svn::"$1 "/" $2 ")"}'
@@ -177,7 +177,7 @@ export GIT_EDITOR="vim"
 
 # Add git and svn branch names
 export PS1="\$(parse_git_branch)\$(parse_svn_branch)\n"
-export PS1="$PS1\${debian_chroot:+($debian_chroot)}\[\033[01;34m\]You are \[\033[01;33m\]\u\[\033[01;35m\] -at- \[\033[01;36m\]\h \[\033[00m\][\[\033[01;31m\]\w\[\033[00m\]]\n\[\033[01;32m\]\$  \[\033[00m\]"
+export PS1="$PS1\${debian_chroot:+($debian_chroot)}\[\033[01;34m\]Mày là \[\033[01;03;33m\]\u\[\033[00;01;35m\] ở \[\033[01;03;36m\]\h \[\033[00;00m\][\[\033[01;31m\]\w\[\033[00m\]]\n\[\033[01;32m\]\$  \[\033[00m\]"
 source ~/.rvm/scripts/rvm
 # source ~/code/virtualenv/bin/activate
 # alias vim="nvim"
@@ -194,3 +194,7 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export HISTIZE=10000
 export HISTTIMEFORMAT="%d/%m/%y %T "
 export PROMPT_COMMAND='if [ "$(id -u)" -ne 0 ]; then echo "$(pwd) $(history 1)" >> ~/.logs/bash-history-$(date "+%Y-%m-%d").log; fi;history -a;history -c;history -r'
+
+# transfer.sh
+transfer() { if [ $# -eq 0 ]; then echo "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md"; return 1; fi
+tmpfile=$( mktemp -t transferXXX ); if tty -s; then basefile=$(basename "$1" | sed -e 's/[^a-zA-Z0-9._-]/-/g'); curl --progress-bar --upload-file "$1" "https://transfer.sh/$basefile" >> $tmpfile; else curl --progress-bar --upload-file "-" "https://transfer.sh/$1" >> $tmpfile ; fi; cat $tmpfile; rm -f $tmpfile; } 
