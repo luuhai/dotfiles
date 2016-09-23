@@ -155,8 +155,8 @@ if [ -x "/Applications/MacVim.app/Contents/MacOS/Vim" ]; then
     PATH=/Applications/MacVim.app/Contents/MacOS/:$PATH
 fi
 
-PYTHONSTARTUP=~/.pythonrc.py
-export PYTHONSTARTUP
+# PYTHONSTARTUP=~/.pythonrc.py
+# export PYTHONSTARTUP
 
 parse_git_branch ()
 {
@@ -177,9 +177,9 @@ export GIT_EDITOR="vim"
 
 # Add git and svn branch names
 export PS1="\$(parse_git_branch)\$(parse_svn_branch)\n"
-export PS1="$PS1\${debian_chroot:+($debian_chroot)}\[\033[01;34m\]Mày là \[\033[01;03;33m\]\u\[\033[00;01;35m\] ở \[\033[01;03;36m\]\h \[\033[00;00m\][\[\033[01;31m\]\w\[\033[00m\]]\n\[\033[01;32m\]\$  \[\033[00m\]"
-source ~/.rvm/scripts/rvm
-# source ~/code/virtualenv/bin/activate
+export PS1="$PS1\${debian_chroot:+($debian_chroot)}\[\033[01;34m\]Xin chào anh \[\033[01;03;33m\]\u\[\033[00;01;35m\] ở máy \[\033[01;03;36m\]\h \[\033[00;00m\][\[\033[01;31m\]\w\[\033[00m\]]\n\[\033[01;32m\]\$  \[\033[00m\]"
+# source ~/.rvm/scripts/rvm
+source ~/code/virtualenv/first_env/bin/activate
 # alias vim="nvim"
 # alias ovim="/usr/bin/vim"
 
@@ -187,7 +187,7 @@ source ~/.rvm/scripts/rvm
 export PATH="/usr/local/heroku/bin:$PATH"
 
 # Add this line to fix the bug: new tab is not opened in the same location as previous tab
-. /etc/profile.d/vte.sh
+# . /etc/profile.d/vte.sh
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
@@ -197,4 +197,15 @@ export PROMPT_COMMAND='if [ "$(id -u)" -ne 0 ]; then echo "$(pwd) $(history 1)" 
 
 # transfer.sh
 transfer() { if [ $# -eq 0 ]; then echo "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md"; return 1; fi
-tmpfile=$( mktemp -t transferXXX ); if tty -s; then basefile=$(basename "$1" | sed -e 's/[^a-zA-Z0-9._-]/-/g'); curl --progress-bar --upload-file "$1" "https://transfer.sh/$basefile" >> $tmpfile; else curl --progress-bar --upload-file "-" "https://transfer.sh/$1" >> $tmpfile ; fi; cat $tmpfile; rm -f $tmpfile; } 
+tmpfile=$( mktemp -t transferXXX ); if tty -s; then basefile=$(basename "$1" | sed -e 's/[^a-zA-Z0-9._-]/-/g'); curl --progress-bar --upload-file "$1" "https://transfer.sh/$basefile" >> $tmpfile; else curl --progress-bar --upload-file "-" "https://transfer.sh/$1" >> $tmpfile ; fi; cat $tmpfile; rm -f $tmpfile; }
+
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
+
+# MPD daemon start (if no other user instance exists)
+[ ! -s ~/.config/mpd/pid ] && mpd
+
+export GOBIN=$HOME/code/gowork/bin
+export GOPATH=$HOME/code/gowork
+export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin

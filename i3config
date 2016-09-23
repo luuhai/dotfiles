@@ -154,27 +154,41 @@ mouse_warping none
 
 ### BEGIN: MMJ's workspace settings
 
-workspace 1 output HDMI1
-workspace 2 output VGA1
-workspace 3 output eDP1
-workspace 10 output HDMI1
+# workspace 1 output HDMI1
+# workspace 2 output VGA1
+# workspace 3 output eDP1
+# workspace 10 output HDMI1
 
-exec ibus-daemon
 
 
 #exec --no-startup-id xrandr --output eDP1 --auto --output VGA1 --auto --left-of eDP1 --output HDMI1 --auto --left-of VGA1
-exec --no-startup-id xrandr --output eDP1 --auto --pos 3840x156 --output VGA1 --auto --pos 1920x0 --output HDMI1 --auto --pos 0x0
-exec --no-startup-id feh --bg-scale ~/Downloads/wallpaper/DSC_0013.jpg --bg-scale ~/Downloads/wallpaper/7xBTexP.jpg --bg-scale ~/Downloads/wallpaper/EfBKTpv.jpg
+# exec --no-startup-id xrandr --output eDP1 --auto --pos 3840x156 --output VGA1 --auto --pos 1920x0 --output HDMI1 --auto --pos 0x0
+# exec --no-startup-id feh --bg-scale ~/Downloads/wallpaper/DSC_0013.jpg --bg-scale ~/Downloads/wallpaper/7xBTexP.jpg --bg-scale ~/Downloads/wallpaper/EfBKTpv.jpg
+
+### END
+
+### BEGIN: VCCorp's workspace settings
+
+workspace 1 output HDMI1
+workspace 2 output VGA1
+workspace 3 output VGA1
+workspace 10 output HDMI1
+
+exec --no-startup-id xrandr --output VGA1 --auto --output HDMI1 --auto --left-of VGA1
+exec --no-startup-id feh --bg-scale "$(find ~/Downloads/Wallpaper/|shuf -n1)" --bg-scale "$(find ~/Downloads/Wallpaper/|shuf -n1)"
+
+exec ibus-daemon
 
 assign [class="^Evince$"] 10
 assign [class="^Firefox$"] 1
-assign [class="^Skype$"] 3
+assign [class="^google-chrome$"] 1
+assign [class="^skypeforlinux$"] 3
 assign [class="^Thunderbird$"] 3
 
-exec --no-startup-id i3-msg 'workspace 10; exec evince ~/Documents/Book/*'
+exec --no-startup-id i3-msg 'workspace 10; exec evince ~/Documents/Books/*'
 exec --no-startup-id i3-msg 'workspace 1; exec firefox'
 exec --no-startup-id i3-msg 'workspace 2; exec gnome-terminal'
-exec --no-startup-id i3-msg 'workspace 3; exec skype'
+exec --no-startup-id i3-msg 'workspace 3; exec skypeforlinux'
 exec thunderbird
 
 ### END
