@@ -73,6 +73,8 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
+Plugin 'derekwyatt/vim-scala'
+Plugin 'junegunn/goyo.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -86,11 +88,11 @@ set termguicolors
 " let g:solarized_termcolors=256
 set t_ZH=[3m
 set t_ZR=[23m
-let g:gruvbox_contrast='hard'
+let g:gruvbox_contrast_dark='hard'
 let g:gruvbox_italic=1
 set background=dark
 let base16colorspace=256
-colorscheme base16-default
+colorscheme base16-default-dark
 let g:airline_theme='base16_eighties'
 highlight Comment gui=italic cterm=italic
 nmap <F8> :TagbarToggle<CR>
@@ -131,6 +133,7 @@ let g:airline#extensions#tabline#close_symbol = '×'
 let g:airline#extensions#tabline#show_close_button = 0
 
 let g:ycm_path_to_python_interpreter = '/usr/bin/python'
+let g:ycm_autoclose_preview_window_after_completion = 1
 
 " The Silver Searcher
 if executable('ag')
@@ -150,7 +153,11 @@ map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
 
-let g:rspec_command = "!rspec {spec}"
+" let g:rspec_command = "!rspec {spec}"
+
+" Show 80-character-limit vertical line
+set colorcolumn=80
+hi ColorColumn guibg=#e83f25 ctermbg=246
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
 "
