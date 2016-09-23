@@ -88,7 +88,7 @@ set t_ZR=[23m
 let g:gruvbox_contrast='hard'
 let g:gruvbox_italic=1
 set background=dark
-colorscheme base16-default
+colorscheme gruvbox
 let g:airline_theme='base16_eighties'
 highlight Comment gui=italic cterm=italic
 nmap <F8> :TagbarToggle<CR>
