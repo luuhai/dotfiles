@@ -28,14 +28,11 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
-Plugin 'vim-ruby/vim-ruby'
 Plugin 'scrooloose/nerdtree'
-Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-haml'
 Plugin 'Shougo/unite.vim'
 Plugin 'bling/vim-airline'
 Plugin 'noahfrederick/vim-hemisu'
@@ -45,34 +42,20 @@ Plugin 'rstacruz/sparkup' " HTML zen coding
 Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'bitc/vim-bad-whitespace'
-Plugin 'jnurmine/Zenburn'
-Plugin 'nanotech/jellybeans.vim'
-Plugin 'skwp/vim-colors-solarized'
 Plugin 'mattn/emmet-vim'
-Plugin 'cdmedia/itg_flat_vim'
-Plugin 'ajh17/Spacegray.vim'
 Plugin 'danro/rename.vim'
-Plugin 'slim-template/vim-slim.git'
 Plugin 'kchmck/vim-coffee-script'
-Plugin 'MaxSt/Flatcolor'
 Plugin 'godlygeek/csapprox'
-Plugin 'romainl/Apprentice'
-Plugin 'tomasr/molokai'
-Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'othree/html5.vim'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'kristijanhusak/vim-hybrid-material'
 Plugin 'NSBrianWard/Glacier-Remixes'
 Plugin 'chriskempson/base16-vim'
-Plugin 'baskerville/bubblegum'
-Plugin 'othree/yajs.vim'
-Plugin 'thoughtbot/vim-rspec'
-" Plugin 'scrooloose/syntastic'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
+Plugin 'derekwyatt/vim-scala'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -85,7 +68,7 @@ syntax on
 " let g:solarized_termcolors=256
 set t_ZH=[3m
 set t_ZR=[23m
-let g:gruvbox_contrast='hard'
+let g:gruvbox_contrast_dark='hard'
 let g:gruvbox_italic=1
 set background=dark
 colorscheme gruvbox
@@ -114,7 +97,7 @@ let g:nerdtree_tabs_open_on_new_tab=1
 let g:nerdtree_tabs_open_on_console_startup=1
 
 set undofile
-set undodir=/home/hailt/.vim/vimundo
+set undodir=/Users/hai_lt/.vim/vimundo
 set undolevels=1000
 set undoreload=10000
 
