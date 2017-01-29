@@ -85,7 +85,7 @@ syntax on
 " let g:solarized_termcolors=256
 set t_ZH=[3m
 set t_ZR=[23m
-let g:gruvbox_contrast='hard'
+let g:gruvbox_contrast_dark='hard'
 let g:gruvbox_italic=1
 set background=dark
 colorscheme gruvbox
