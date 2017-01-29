@@ -178,7 +178,6 @@ export GIT_EDITOR="vim"
 # Add git and svn branch names
 export PS1="\$(parse_git_branch)\$(parse_svn_branch)\n"
 export PS1="$PS1\${debian_chroot:+($debian_chroot)}\[\033[01;34m\]Mày là \[\033[01;03;33m\]\u\[\033[00;01;35m\] ở \[\033[01;03;36m\]\h \[\033[00;00m\][\[\033[01;31m\]\w\[\033[00m\]]\n\[\033[01;32m\]\$  \[\033[00m\]"
-source ~/.rvm/scripts/rvm
 # source ~/code/virtualenv/bin/activate
 # alias vim="nvim"
 # alias ovim="/usr/bin/vim"
@@ -189,7 +188,8 @@ export PATH="/usr/local/heroku/bin:$PATH"
 # Add this line to fix the bug: new tab is not opened in the same location as previous tab
 . /etc/profile.d/vte.sh
 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+# source ~/.rvm/scripts/rvm
+# export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 export HISTIZE=10000
 export HISTTIMEFORMAT="%d/%m/%y %T "
