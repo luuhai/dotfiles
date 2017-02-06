@@ -189,7 +189,8 @@ export PATH=$PATH:$MYSQL_PATH/bin
 # Add this line to fix the bug: new tab is not opened in the same location as previous tab
 # . /etc/profile.d/vte.sh
 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+# source ~/.rvm/scripts/rvm
+# export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 export HISTIZE=10000
 export HISTTIMEFORMAT="%d/%m/%y %T "
