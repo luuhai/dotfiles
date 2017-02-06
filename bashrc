@@ -146,7 +146,7 @@ fi
 
 alias vim="/usr/local/bin/vim"
 alias railsmon="top -p \$(ps -ef | grep \"[r]ails s\" | awk '{print \$2}')"
-alias practice="cd /Users/hai_lt/code/septeni/practice"
+alias practice="cd /Users/hailt/code/septeni/practice"
 
 # osx vim
 if [ -x "/Applications/MacVim.app/Contents/MacOS/Vim" ]; then
@@ -183,6 +183,8 @@ export PS1="$PS1\${debian_chroot:+($debian_chroot)}\[\033[01;34m\]Xin chào bạ
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+export MYSQL_PATH=/usr/local/Cellar/mysql/5.7.16
+export PATH=$PATH:$MYSQL_PATH/bin
 
 # Add this line to fix the bug: new tab is not opened in the same location as previous tab
 # . /etc/profile.d/vte.sh
@@ -192,6 +194,7 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export HISTIZE=10000
 export HISTTIMEFORMAT="%d/%m/%y %T "
 export PROMPT_COMMAND='if [ "$(id -u)" -ne 0 ]; then echo "$(pwd) $(history 1)" >> ~/.logs/bash-history-$(date "+%Y-%m-%d").log; fi;history -a;history -c;history -r'
+export BROWSER=w3m
 
 # transfer.sh
 transfer() { if [ $# -eq 0 ]; then echo "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md"; return 1; fi
