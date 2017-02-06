@@ -56,6 +56,9 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'derekwyatt/vim-scala'
+Plugin 'dracula/vim'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'diepm/vim-rest-console'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -71,7 +74,7 @@ set t_ZR=[23m
 let g:gruvbox_contrast_dark='hard'
 let g:gruvbox_italic=1
 set background=dark
-colorscheme gruvbox
+colorscheme hybrid
 let g:airline_theme='base16_eighties'
 highlight Comment gui=italic cterm=italic
 nmap <F8> :TagbarToggle<CR>
@@ -97,7 +100,7 @@ let g:nerdtree_tabs_open_on_new_tab=1
 let g:nerdtree_tabs_open_on_console_startup=1
 
 set undofile
-set undodir=/Users/hai_lt/.vim/vimundo
+set undodir=/Users/hailt/.vim/vimundo
 set undolevels=1000
 set undoreload=10000
 
