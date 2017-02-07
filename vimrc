@@ -73,6 +73,7 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
+Plugin 'ayu-theme/ayu-vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -88,7 +89,9 @@ set t_ZR=[23m
 let g:gruvbox_contrast_dark='hard'
 let g:gruvbox_italic=1
 set background=dark
-colorscheme gruvbox
+set termguicolors
+let ayucolor="dark"
+colorscheme ayu
 let g:airline_theme='base16_eighties'
 highlight Comment gui=italic cterm=italic
 nmap <F8> :TagbarToggle<CR>

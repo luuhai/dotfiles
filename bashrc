@@ -175,9 +175,12 @@ set -o vi
 export EDITOR="vim"
 export GIT_EDITOR="vim"
 
+# Add this line to fix the bug: new tab is not opened in the same location as previous tab
+. /etc/profile.d/vte.sh
+
 # Add git and svn branch names
 export PS1="\$(parse_git_branch)\$(parse_svn_branch)\n"
-export PS1="$PS1\${debian_chroot:+($debian_chroot)}\[\033[01;34m\]Mày là \[\033[01;03;33m\]\u\[\033[00;01;35m\] ở \[\033[01;03;36m\]\h \[\033[00;00m\][\[\033[01;31m\]\w\[\033[00m\]]\n\[\033[01;32m\]\$  \[\033[00m\]"
+export PS1="$PS1\${debian_chroot:+($debian_chroot)}\[\033[01;34m\]Xin chào anh \[\033[01;03;33m\]\u\[\033[00;01;35m\] ở \[\033[01;03;36m\]\h \[\033[00;00m\][\[\033[01;31m\]\w\[\033[00m\]]\n\[\033[01;32m\]\$  \[\033[00m\]"
 # source ~/code/virtualenv/bin/activate
 # alias vim="nvim"
 # alias ovim="/usr/bin/vim"
@@ -185,15 +188,12 @@ export PS1="$PS1\${debian_chroot:+($debian_chroot)}\[\033[01;34m\]Mày là \[\03
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
-# Add this line to fix the bug: new tab is not opened in the same location as previous tab
-. /etc/profile.d/vte.sh
-
 # source ~/.rvm/scripts/rvm
 # export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 export HISTIZE=10000
 export HISTTIMEFORMAT="%d/%m/%y %T "
-export PROMPT_COMMAND='if [ "$(id -u)" -ne 0 ]; then echo "$(pwd) $(history 1)" >> ~/.logs/bash-history-$(date "+%Y-%m-%d").log; fi;history -a;history -c;history -r'
+export PROMPT_COMMAND="$PROMPT_COMMAND;"'if [ "$(id -u)" -ne 0 ]; then echo "$(pwd) $(history 1)" >> ~/.logs/bash-history-$(date "+%Y-%m-%d").log; fi;history -a;history -c;history -r'
 
 # transfer.sh
 transfer() { if [ $# -eq 0 ]; then echo "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md"; return 1; fi
