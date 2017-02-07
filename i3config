@@ -30,7 +30,9 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+#bindsym $mod+d exec dmenu_run
+# start rofi (alternative to dmenu)
+bindsym $mod+d exec "rofi -show run"
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -163,18 +165,18 @@ exec ibus-daemon
 
 
 #exec --no-startup-id xrandr --output eDP1 --auto --output VGA1 --auto --left-of eDP1 --output HDMI1 --auto --left-of VGA1
-exec --no-startup-id xrandr --output eDP1 --auto --pos 3840x156 --output VGA1 --auto --pos 1920x0 --output HDMI1 --auto --pos 0x0
-exec --no-startup-id feh --bg-scale ~/Downloads/wallpaper/DSC_0013.jpg --bg-scale ~/Downloads/wallpaper/7xBTexP.jpg --bg-scale ~/Downloads/wallpaper/EfBKTpv.jpg
+#exec --no-startup-id xrandr --output eDP1 --auto --pos 3840x156 --output VGA1 --auto --pos 1920x0 --output HDMI1 --auto --pos 0x0
+#exec --no-startup-id feh --bg-scale ~/Downloads/wallpaper/DSC_0013.jpg --bg-scale ~/Downloads/wallpaper/7xBTexP.jpg --bg-scale ~/Downloads/wallpaper/EfBKTpv.jpg
 
 assign [class="^Evince$"] 10
 assign [class="^Firefox$"] 1
 assign [class="^Skype$"] 3
 assign [class="^Thunderbird$"] 3
 
-exec --no-startup-id i3-msg 'workspace 10; exec evince ~/Documents/Book/*'
+exec --no-startup-id i3-msg 'workspace 10; exec evince ~/Books/*'
 exec --no-startup-id i3-msg 'workspace 1; exec firefox'
 exec --no-startup-id i3-msg 'workspace 2; exec gnome-terminal'
-exec --no-startup-id i3-msg 'workspace 3; exec skype'
-exec thunderbird
+#exec --no-startup-id i3-msg 'workspace 3; exec skype'
+#exec thunderbird
 
 ### END
